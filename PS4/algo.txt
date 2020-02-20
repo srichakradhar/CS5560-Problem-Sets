@@ -1,0 +1,21 @@
+  int countTemp = 0;
+  while (values.hasNext()) {
+     String temp = values.next().toString();
+     //out log
+     System.out.println(temp);
+     logReduce.info("item:" + countTemp++ + ":" + temp);
+     String[] listFriend = temp.split(" ");
+     arr.add(listFriend);
+  }
+  HashSet<String> commonElements = new HashSet<String>();
+  for(String[] friends: arr){
+     Arrays.sort(friends);
+     for(String friend: friends){
+        if(commonElements.contains(friend))
+           commonFriendStr += friend + " ";
+        else
+           commonElements.add(friend);
+     }} 
+  Text commonFriendText = new Text();
+  commonFriendText.set(commonFriendStr);
+  output.collect(key, commonFriendText);
